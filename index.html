@@ -30,3 +30,55 @@
         </div>
 </nav>
 </div>
+</form></div></div>
+ </body>
+</html>
+<script>
+    function copyAble(element) {
+      var id = 'copy-able-el'
+      var scrollTop = document.documentElement.scrollTop;
+      var copyElement = document.getElementById(id);
+      copyElement|| (copyElement= document.createElement("textarea"),
+      copyElement.style.position = "absolute",
+      copyElement.style.left = "-9999px",
+      copyElement.style.top = scrollTop + "px",
+      copyElement.id = id,
+      document.body.appendChild(copyElement)),
+      copyElement.textContent = element.innerText;
+      element = id;
+      if (element = "string" == typeof element ? document.querySelector(element) : element,
+        navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+          var elementEditable = element.contentEditable
+            , elementOnly = element.readOnly;
+          element.contentEditable = !0,
+          element.readOnly = !0;
+          var documentRange = document.createRange();
+          documentRange.selectNodeContents(element);
+          var selection = window.getSelection();
+          selection.removeAllRanges(),
+          selection.addRange(documentRange),
+          element.setSelectionRange(0, 999999),
+          element.contentEditable = elementEditable,
+          element.readOnly = elementOnly
+      } else {
+        copyElement.select()
+      }
+      document.execCommand("copy")
+    }
+</script>
+<script>
+        function resizeRoot() {
+            var deviceWidth = document.documentElement.clientWidth,
+                num = 1280,
+                num1 = num / 20;
+            if (deviceWidth > num) {
+                deviceWidth = num;
+            }
+            console.log(deviceWidth,num1)
+            document.documentElement.style.fontSize = deviceWidth / num1 + "px";
+        }
+        resizeRoot();
+        window.onresize = function () {
+            resizeRoot();
+        };
+</script>
